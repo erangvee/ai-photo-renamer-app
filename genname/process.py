@@ -4,6 +4,7 @@ from genname import generator, download
 import streamlit as st
 
 
+
 def process_summary():
     image_source = "./source/"
     image_output = "./output/"
@@ -28,4 +29,7 @@ def process_summary():
                 placeholder.write(f"Failed to rename image {f}.")
 
     placeholder.write("### *DONE*")
-    download.download_folder(image_output)
+    return True
+
+
+

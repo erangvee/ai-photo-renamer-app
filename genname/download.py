@@ -4,6 +4,10 @@ import shutil
 
 def download_clicked():
     st.session_state.download_clicked = True
+    done_session = st.button("Finish session", on_click=done_clicked)
+
+def done_clicked():
+    st.session_state.done_clicked = True
 
 def download_folder(path):
     # Set the directory you want to zip
@@ -25,6 +29,16 @@ def download_folder(path):
             on_click=download_clicked
         )
 
-    # Clean up the ZIP file after download (optional)
-    if os.path.exists(zip_filename):
-        os.remove(zip_filename)
+    # if st.session_state.download_clicked:
+
+    #     done_session = st.button("Finish session", on_click=done_clicked)
+        
+        # if done_session or st.session_state.done_clicked:
+        #     os.remove(image_output)
+        #     os.remove(image_source)
+
+        # # Clean up the ZIP file after download (optional)
+        # if os.path.exists(zip_filename):
+        #     os.remove(zip_filename)
+
+
