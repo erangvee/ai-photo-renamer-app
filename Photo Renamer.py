@@ -1,7 +1,7 @@
 import streamlit as st 
 import os
 from dotenv import load_dotenv
-from genname import process, inits
+from genname import process, inits, download
 
 def process_clicked():
     st.session_state.process_clicked = True
@@ -30,5 +30,9 @@ for uploaded_file in uploaded_files:
 
 process_button = st.button("Start processing", on_click=process_clicked)
 
+processed = False
 if process_button:
-    process.process_summary()
+    processsed = process.process_summary()
+    st.write(processed)
+    # if processed:
+    download.download_folder("./output/")
