@@ -14,6 +14,9 @@ def init_session_states():
     if "counter" not in st.session_state:
         st.session_state.counter = 0
 
+    if "checker" not in st.session_state:
+        st.session_state.checker = []
+
 def init_dirs(path):
     for dirx in ['source', 'output']:
         if dirx not in os.listdir(path):

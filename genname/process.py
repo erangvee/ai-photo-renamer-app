@@ -14,6 +14,11 @@ def process_summary():
 
     placeholder.write("### *Processing...*")
     for f in images:
+        if f not in st.session_state.checker:
+            st.session_state.checker.append(f)
+        else:
+            continue 
+        
         if is_not_jpg(f):
             placeholder.write(f"The image {f} is not in JPG/PNG format.")
         else:
