@@ -11,6 +11,9 @@ def init_session_states():
     if "done_clicked" not in st.session_state:
         st.session_state.done_clicked = False
 
+    if "counter" not in st.session_state:
+        st.session_state.counter = 0
+
 def init_dirs(path):
     for dirx in ['source', 'output']:
         if dirx not in os.listdir(path):

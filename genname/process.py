@@ -23,7 +23,13 @@ def process_summary():
             if summary:
                 print(f"Image summary: {summary}")
                 new_file_name = sluggify(summary)+'.'+f.split('.')[1]
+
+                while new_file_name in os.listdir(image_output):
+                    st.session_state.counter += 1
+                    new_file_name = sluggify(summary)+' ('+str(st.session_state.counter)+').'+f.split('.')[1]
+                
                 copy_and_rename_file(image_path, image_output, new_file_name)
+                st.session_state.counter = 0
                 placeholder.write(f"Successfully renamed image **{f}** to **{new_file_name}**.")
             else:
                 placeholder.write(f"Failed to rename image {f}.")
