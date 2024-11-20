@@ -15,14 +15,14 @@ def copy_and_rename_file(source_path, destination_folder, new_file_name):
     try:
         # Copy the file
         shutil.copy(source_path, destination_path)
-        print(f"Copied {source_path} to {destination_path}")
+        # print(f"Copied {source_path} to {destination_path}")
         
         # Create the new destination path with the new file name
         new_destination_path = os.path.join(destination_folder, new_file_name)
         
         # Rename the copied file
         os.rename(destination_path, new_destination_path)
-        print(f"Renamed {destination_path} to {new_destination_path}")
+        # print(f"Renamed {destination_path} to {new_destination_path}")
     except:
         os.remove(destination_path)
         pass

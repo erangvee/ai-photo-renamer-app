@@ -5,7 +5,7 @@ import shutil
 def download_clicked():
     st.session_state.download_clicked = True
 
-def download_folder(path):
+def download_folder(path, key=None):
     # Set the directory you want to zip
     folder_to_zip = "./output"
 
@@ -22,7 +22,8 @@ def download_folder(path):
             data=f,
             file_name=os.path.basename(zip_filename),
             mime="application/zip",
-            on_click=download_clicked
+            on_click=download_clicked,
+            key=key
         )
 
     # if st.session_state.download_clicked:

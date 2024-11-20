@@ -17,11 +17,11 @@ def process_summary():
         if is_not_jpg(f):
             placeholder.write(f"The image {f} is not in JPG/PNG format.")
         else:
-            print(f"The image {f} is in JPG/PNG format.")
+            # print(f"The image {f} is in JPG/PNG format.")
             image_path = image_source+f
             summary = generator.get_image_summary(image_path)
             if summary:
-                print(f"Image summary: {summary}")
+                # print(f"Image summary: {summary}")
                 new_file_name = sluggify(summary)+'.'+f.split('.')[1]
 
                 while new_file_name in os.listdir(image_output):

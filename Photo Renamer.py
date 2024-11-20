@@ -40,7 +40,7 @@ process_button = st.button("Start processing", on_click=process_clicked)
 processed = False
 if process_button:
     processsed = process.process_summary()
-    st.write(processed)
+    # st.write(processed)
     # if processed:
     download.download_folder(DOWNLOAD_PATH)
 
@@ -49,7 +49,7 @@ if st.session_state.download_clicked:
     
     with col1:
         st.write("## Download")
-        download.download_folder(DOWNLOAD_PATH)
+        download.download_folder(DOWNLOAD_PATH,key="Second")
 
     with col2:
         st.write("## Finish Session")
