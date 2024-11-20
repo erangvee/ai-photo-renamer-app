@@ -48,11 +48,11 @@ if st.session_state.download_clicked:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.write("## Download")
+        # st.write("## Download")
         download.download_folder(DOWNLOAD_PATH,key="Second")
 
     with col2:
-        st.write("## Finish Session")
+        # st.write("## Finish Session")
         done_session = st.button("Finish session", on_click=done_clicked, key="Done")
 
         if done_session or st.session_state.done_clicked:
