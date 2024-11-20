@@ -4,10 +4,6 @@ import shutil
 
 def download_clicked():
     st.session_state.download_clicked = True
-    done_session = st.button("Finish session", on_click=done_clicked)
-
-def done_clicked():
-    st.session_state.done_clicked = True
 
 def download_folder(path):
     # Set the directory you want to zip
