@@ -28,9 +28,6 @@ SOURCE_PATH = os.getenv('SOURCE_PATH') + '-' + token + '/'
 st.session_state.DOWNLOAD_PATH = DOWNLOAD_PATH
 st.session_state.SOURCE_PATH = SOURCE_PATH
 
-for path in [DOWNLOAD_PATH, SOURCE_PATH]:
-    os.makedirs(path, exist_ok=True)
-
 st.title(PAGE_TITLE)
 
 st.markdown(str(os.getenv('PAGE_DESC')))
@@ -39,6 +36,8 @@ uploaded_files = st.file_uploader("Upload images. Only PNG and JPG photos accept
 
 for uploaded_file in uploaded_files:
     if uploaded_file is not None:
+        for path in [DOWNLOAD_PATH, SOURCE_PATH]:
+            os.makedirs(path, exist_ok=True)
         # Save the uploaded file to the specified directory
         file_path = os.path.join(SOURCE_PATH, uploaded_file.name)
         with open(file_path, "wb") as f:
