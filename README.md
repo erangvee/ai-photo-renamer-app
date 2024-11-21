@@ -18,5 +18,5 @@ This code is developed and tested on Python 12. Packages used with their corresp
 ```
 GOOGLE_API_KEY=YOUR_API_KEY
 ```
-4. Run `python main.py`
+4. Run `streamlit run "Photo Renamer.py"`
 
