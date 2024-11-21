@@ -22,8 +22,8 @@ PAGE_TITLE = os.getenv('PAGE_TITLE')
 # SOURCE_PATH = os.getenv('SOURCE_PATH')
 token = st.session_state.token
 
-DOWNLOAD_PATH = os.getenv('DOWNLOAD_PATH') + '-' + token + '/'
-SOURCE_PATH = os.getenv('SOURCE_PATH') + '-' + token + '/'
+DOWNLOAD_PATH = os.getenv('DOWNLOAD_PATH').rstrip('./') + '-' + token + '/'
+SOURCE_PATH = os.getenv('SOURCE_PATH').rstrip('/') + '-' + token + '/'
 
 st.session_state.DOWNLOAD_PATH = DOWNLOAD_PATH
 st.session_state.SOURCE_PATH = SOURCE_PATH
