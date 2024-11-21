@@ -26,16 +26,5 @@ def download_folder(path, key=None):
             key=key
         )
 
-    # if st.session_state.download_clicked:
-
-    #     done_session = st.button("Finish session", on_click=done_clicked)
-        
-        # if done_session or st.session_state.done_clicked:
-        #     os.remove(image_output)
-        #     os.remove(image_source)
-
-        # # Clean up the ZIP file after download (optional)
-        # if os.path.exists(zip_filename):
-        #     os.remove(zip_filename)
 
 

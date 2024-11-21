@@ -37,7 +37,7 @@ def process_summary():
                 st.session_state.counter = 0
                 placeholder.success(f"Successfully renamed image **{f}** to **{new_file_name}**.")
             else:
-                placeholder.write(f"Failed to rename image {f}.")
+                placeholder.error(f"Failed to rename image {f}.")
 
     placeholder.write("### *DONE*")
     return True

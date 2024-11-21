@@ -23,7 +23,7 @@ PAGE_TITLE = os.getenv('PAGE_TITLE')
 token = st.session_state.token
 
 DOWNLOAD_PATH = os.getenv('DOWNLOAD_PATH').rstrip('./') + '-' + token + '/'
-SOURCE_PATH = os.getenv('SOURCE_PATH').rstrip('/') + '-' + token + '/'
+SOURCE_PATH = os.getenv('SOURCE_PATH').rstrip('./') + '-' + token + '/'
 
 st.session_state.DOWNLOAD_PATH = DOWNLOAD_PATH
 st.session_state.SOURCE_PATH = SOURCE_PATH
@@ -57,20 +57,14 @@ if len(uploaded_files) > 0:
         col1, col2 = st.columns(2)
         
         with col1:
-            # st.write("## Download")
+            
             download.download_folder(DOWNLOAD_PATH,key="Second")
 
         with col2:
-            # st.write("## Finish Session")
+            
             done_session = st.button("Finish session", on_click=done_clicked, key="Done")
 
             if done_session or st.session_state.done_clicked:
-                #os.remove(DOWNLOAD_PATH)
-                # for i in os.listdir(SOURCE_PATH):
-                #     os.remove(SOURCE_PATH+'/'+i)
-
-                # for i in os.listdir(DOWNLOAD_PATH):
-                #     os.remove(DOWNLOAD_PATH+'/'+i)
 
                 shutil.rmtree(DOWNLOAD_PATH)
                 shutil.rmtree(SOURCE_PATH)
