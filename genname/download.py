@@ -7,8 +7,8 @@ def download_clicked():
 
 def download_folder(path, key=None):
     # Set the directory you want to zip
-    folder_to_zip = "./output"
-
+    folder_to_zip = st.session_state.DOWNLOAD_PATH.rstrip('/')
+    
     # Create a ZIP file of the folder
     # Set the output directory for the ZIP file
 

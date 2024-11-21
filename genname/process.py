@@ -6,8 +6,8 @@ import streamlit as st
 
 
 def process_summary():
-    image_source = "./source/"
-    image_output = "./output/"
+    image_source = st.session_state.SOURCE_PATH
+    image_output = st.session_state.DOWNLOAD_PATH
 
     images = os.listdir(image_source)
     placeholder = st.empty()
