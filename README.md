@@ -4,9 +4,9 @@ This application uses [Gemini Developer API](https://ai.google.dev/). The develo
 * [Using Generative AI to Improve Image Filenames](https://www.raymondcamden.com/2024/01/26/using-generative-ai-to-improve-image-filenames)
 * [ai-photo-renamer](https://github.com/philspaceagency/ai-photo-renamer)
 
-The intention is to use [Streamlit](https://streamlit.io/) to deploy the AI Photo Renamer to the web for practical use. (Streamlit development ongoing as of 19 October 2024.)
+The intention is to use [Streamlit](https://streamlit.io/) to deploy the AI Photo Renamer to the web for practical use.
 
-This code feeds on images inside the `/source` folder, generates a filename based on the image (using Gemini `gemini-1.5-flash` model), and copies and renames the images to `/output`.
+This code feeds on images inside a `/source-<randomhash>` folder, generates a filename based on the image (using Gemini `gemini-1.5-flash` model), and copies and renames the images to `/output-<randomhash>`.
 
 # Python Environment
 This code is developed and tested on Python 12. Packages used with their corresponding versions are in `requirements.txt`.
