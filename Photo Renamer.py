@@ -43,44 +43,45 @@ for uploaded_file in uploaded_files:
         with open(file_path, "wb") as f:
             f.write(uploaded_file.getbuffer())  # Use getbuffer() to get the file data
 
-process_button = st.button("Start processing", on_click=process_clicked)
+if len(uploaded_files) > 0:
+    process_button = st.button("Start processing", on_click=process_clicked)
 
-processed = False
-if process_button:
-    processsed = process.process_summary()
-    # st.write(processed)
-    # if processed:
-    download.download_folder(DOWNLOAD_PATH)
+    processed = False
+    if process_button or st.session_state.process_clicked:
+        processsed = process.process_summary()
+        # st.write(processed)
+        # if processed:
+        # download.download_folder(DOWNLOAD_PATH)
 
-if st.session_state.download_clicked:
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        # st.write("## Download")
-        download.download_folder(DOWNLOAD_PATH,key="Second")
+# if st.session_state.download_clicked:
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            # st.write("## Download")
+            download.download_folder(DOWNLOAD_PATH,key="Second")
 
-    with col2:
-        # st.write("## Finish Session")
-        done_session = st.button("Finish session", on_click=done_clicked, key="Done")
+        with col2:
+            # st.write("## Finish Session")
+            done_session = st.button("Finish session", on_click=done_clicked, key="Done")
 
-        if done_session or st.session_state.done_clicked:
-            #os.remove(DOWNLOAD_PATH)
-            # for i in os.listdir(SOURCE_PATH):
-            #     os.remove(SOURCE_PATH+'/'+i)
+            if done_session or st.session_state.done_clicked:
+                #os.remove(DOWNLOAD_PATH)
+                # for i in os.listdir(SOURCE_PATH):
+                #     os.remove(SOURCE_PATH+'/'+i)
 
-            # for i in os.listdir(DOWNLOAD_PATH):
-            #     os.remove(DOWNLOAD_PATH+'/'+i)
+                # for i in os.listdir(DOWNLOAD_PATH):
+                #     os.remove(DOWNLOAD_PATH+'/'+i)
 
-            shutil.rmtree(DOWNLOAD_PATH)
-            shutil.rmtree(SOURCE_PATH)
+                shutil.rmtree(DOWNLOAD_PATH)
+                shutil.rmtree(SOURCE_PATH)
 
-            # Clean up the ZIP fi le after download (optional)
-            zip_filename = st.session_state.DOWNLOAD_PATH.strip('./')+".zip"
-            if os.path.exists(zip_filename):
-                os.remove(zip_filename)
+                # Clean up the ZIP fi le after download (optional)
+                zip_filename = st.session_state.DOWNLOAD_PATH.strip('./')+".zip"
+                if os.path.exists(zip_filename):
+                    os.remove(zip_filename)
 
+                
+                streamlit_js_eval(js_expressions="parent.window.location.reload()")
             
-            streamlit_js_eval(js_expressions="parent.window.location.reload()")
-        
-        
-        
+            
+            

@@ -35,7 +35,7 @@ def process_summary():
                 
                 copy_and_rename_file(image_path, image_output, new_file_name)
                 st.session_state.counter = 0
-                placeholder.write(f"Successfully renamed image **{f}** to **{new_file_name}**.")
+                placeholder.success(f"Successfully renamed image **{f}** to **{new_file_name}**.")
             else:
                 placeholder.write(f"Failed to rename image {f}.")
 
