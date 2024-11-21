@@ -8,6 +8,11 @@ The intention is to use [Streamlit](https://streamlit.io/) to deploy the AI Phot
 
 This code feeds on images inside a `/source-<randomhash>` folder, generates a filename based on the image (using Gemini `gemini-1.5-flash` model), and copies and renames the images to `/output-<randomhash>`.
 
+# Other info
+* To facilitate simultaneous use of the Streamlit app, unique `source` and `output` folders are created per session to separate images uploaded by different users. These folders are deleted after session is finished (requires the user to click Finished Session button). For future enhancement: detect when the session is done and automatically delete `source` and `output` folders.
+* If an image similar to a processed one is named similarly, the filename is appended with a counter (i.e. `hand-holds-city-polaroid-photo.png`, `hand-holds-city-polaroid-photo (1).png`, `hand-holds-city-polaroid-photo (2).png`, ...)
+* The prompt requires the image description (which is used as new filename) to be no more than 5 words. You can update the prompt in `genname/generator.py`.
+
 # Python Environment
 This code is developed and tested on Python 12. Packages used with their corresponding versions are in `requirements.txt`.
 
