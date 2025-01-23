@@ -12,6 +12,9 @@ def process_clicked():
 def done_clicked():
     st.session_state.done_clicked = True
 
+def uploaded():
+    st.session_state.uploaded = True
+
 
 # initialize session states for global variables
 inits.init_session_states()
@@ -20,15 +23,19 @@ token = st.session_state.token # to facilitate unique sessions
 # load variables from file
 load_dotenv('vars')
 
+SOURCE_PREFIX = os.getenv('SOURCE_PREFIX')
+OUTPUT_PREFIX = os.getenv('OUTPUT_PREFIX')
+
 # specify constants
 PAGE_TITLE = os.getenv('PAGE_TITLE')
-DOWNLOAD_PATH = './output-' + token + '/'
-SOURCE_PATH = './source-' + token + '/'
+DOWNLOAD_PATH = './' + OUTPUT_PREFIX + token + '/'
+SOURCE_PATH = './' + SOURCE_PREFIX + token + '/'
 HOURS_OLD = int(os.getenv('HOURS_OLD'))
+st.session_state.prompt = os.getenv('BASE_PROMPT')
 
 # clean up old files
 try:
-    inits.init_cleanup(os.getcwd(), HOURS_OLD)
+    inits.init_cleanup(os.getcwd(), HOURS_OLD, [SOURCE_PREFIX, OUTPUT_PREFIX])
 except:
     # pass if there are no older files
     pass
@@ -44,9 +51,12 @@ st.write("# ", PAGE_TITLE)
 st.markdown(str(os.getenv('PAGE_DESC'))+""" (_"""+str(os.getenv('GEMINI_VER'))+"""_)""")
 
 st.markdown("## Upload photos")
-uploaded_files = st.file_uploader("Upload images. Only PNG and JPG photos accepted.", type=['png','jpg'], accept_multiple_files=True)
+uploaded_files = st.file_uploader("Upload images. Only PNG and JPG photos accepted.", 
+                                type=['png','jpg'], 
+                                accept_multiple_files=True,
+                                on_change=uploaded)
 
-if len(uploaded_files) > 0:
+if uploaded_files or st.session_state.uploaded:
     st.markdown("""
                 ## Prompt
                 The system uses the base prompt:
@@ -54,6 +64,9 @@ if len(uploaded_files) > 0:
                 _"""+st.session_state.prompt+"""_"""
                 )
 
+    st.session_state.count+=1
+    st.write(st.session_state.count)
+    # give option to append text to the original prompt.
     add = st.checkbox("Append text to the prompt.")
 
     if add:
@@ -79,12 +92,14 @@ if len(uploaded_files) > 0:
                     f.write(uploaded_file.getbuffer())  # Use getbuffer() to get the file data
 
         processsed = process.process_summary()
+    st.session_state.uploaded = False
     
 if st.session_state.processed:
+    st.session_state.uploaded = False
     col1, col2 = st.columns(2)
 
     with col1:        
-        download.download_folder(DOWNLOAD_PATH,key="Second")
+        download.download_folder(DOWNLOAD_PATH, key="Second")
 
     with col2:
         

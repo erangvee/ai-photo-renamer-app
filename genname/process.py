@@ -39,6 +39,7 @@ def process_summary():
     
     placeholder.write("### *DONE*")
     st.session_state.processed = True
+    return True
 
 
 

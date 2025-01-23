@@ -34,14 +34,12 @@ def init_session_states():
     if "processed" not in st.session_state:
         st.session_state.processed = False
 
-    if "prompt" not in st.session_state:
-        st.session_state.prompt = "Write a one sentence short summary of this image. The sentence should be no more than five words."
+    if "uploaded" not in st.session_state:
+        st.session_state.uploaded = False
 
-def init_dirs(path):
-    for dirx in ['source', 'output']:
-        if dirx not in os.listdir(path):
-            os.mkdir(path+'/'+dirx)
+    if "count" not in st.session_state:
+        st.session_state.count = 0
 
-def init_cleanup(path, hours_old):
+def init_cleanup(path, hours_old, prefixes=["source-", "output-"]):
     clean.delete_old_zip_files(path, hours_old)
-    clean.delete_old_folders(path, hours_old)
+    clean.delete_old_folders(path, hours_old, prefixes)
