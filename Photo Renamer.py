@@ -13,15 +13,25 @@ def done_clicked():
     st.session_state.done_clicked = True
 
 
+# initialize session states for global variables
 inits.init_session_states()
+token = st.session_state.token # to facilitate unique sessions
 
+# load variables from file
 load_dotenv('vars')
+
+# specify constants
 PAGE_TITLE = os.getenv('PAGE_TITLE')
-
-token = st.session_state.token
-
 DOWNLOAD_PATH = os.getenv('DOWNLOAD_PATH').rstrip('./') + '-' + token + '/'
 SOURCE_PATH = os.getenv('SOURCE_PATH').rstrip('./') + '-' + token + '/'
+HOURS_OLD = int(os.getenv('HOURS_OLD'))
+
+# clean up old files
+try:
+    inits.init_cleanup(os.getcwd(), HOURS_OLD)
+except:
+    # pass if there are no older files
+    pass
 
 st.session_state.DOWNLOAD_PATH = DOWNLOAD_PATH # save variables to session state
 st.session_state.SOURCE_PATH = SOURCE_PATH # save variables to session state

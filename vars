@@ -3,3 +3,4 @@ PAGE_DESC="This application uses Gemini to rename photos."
 GEMINI_VER="gemini-1.5-flash"
 DOWNLOAD_PATH="./output/"
 SOURCE_PATH="./source/"
+HOURS_OLD=1

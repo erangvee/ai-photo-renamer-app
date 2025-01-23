@@ -2,6 +2,8 @@ import streamlit as st
 import os
 import secrets
 
+from utils import clean
+
 def init_session_states():    
     token = secrets.token_hex(4)
 
@@ -39,3 +41,7 @@ def init_dirs(path):
     for dirx in ['source', 'output']:
         if dirx not in os.listdir(path):
             os.mkdir(path+'/'+dirx)
+
+def init_cleanup(path, hours_old):
+    clean.delete_old_zip_files(path, hours_old)
+    clean.delete_old_folders(path, hours_old)
