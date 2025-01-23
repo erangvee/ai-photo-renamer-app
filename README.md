@@ -40,6 +40,6 @@ This code is developed and tested on Python 12. Packages used with their corresp
 ```
 GOOGLE_API_KEY=YOUR_API_KEY
 ```
-4. Configure other page settings in `var`.
+4. Configure other page settings in `vars`.
 5. Run `streamlit run "Photo Renamer.py"`
 
