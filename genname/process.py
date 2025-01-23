@@ -11,7 +11,7 @@ def process_summary():
 
     images = os.listdir(image_source)
     placeholder = st.empty()
-
+    st.session_state.checker = []
     placeholder.write("### *Processing...*")
     for f in images:
         if f not in st.session_state.checker:
@@ -22,11 +22,9 @@ def process_summary():
         if is_not_jpg(f):
             placeholder.write(f"The image {f} is not in JPG/PNG format.")
         else:
-            # print(f"The image {f} is in JPG/PNG format.")
             image_path = image_source+f
-            summary = generator.get_image_summary(image_path)
+            summary = generator.get_image_summary(image_path, st.session_state.prompt)
             if summary:
-                # print(f"Image summary: {summary}")
                 new_file_name = sluggify(summary)+'.'+f.split('.')[1]
 
                 while new_file_name in os.listdir(image_output):
@@ -38,9 +36,9 @@ def process_summary():
                 placeholder.success(f"Successfully renamed image **{f}** to **{new_file_name}**.")
             else:
                 placeholder.error(f"Failed to rename image {f}.")
-
+    
     placeholder.write("### *DONE*")
-    return True
+    st.session_state.processed = True
 
 
 

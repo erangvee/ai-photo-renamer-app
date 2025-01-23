@@ -29,6 +29,12 @@ def init_session_states():
     if "token" not in st.session_state:
         st.session_state.token = token
 
+    if "processed" not in st.session_state:
+        st.session_state.processed = False
+
+    if "prompt" not in st.session_state:
+        st.session_state.prompt = "Write a one sentence short summary of this image. The sentence should be no more than five words."
+
 def init_dirs(path):
     for dirx in ['source', 'output']:
         if dirx not in os.listdir(path):

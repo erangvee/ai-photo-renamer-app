@@ -5,7 +5,7 @@ import os
 import google.generativeai as genai
 from dotenv import load_dotenv
 
-def get_image_summary(path):
+def get_image_summary(path, prompt_text):
     load_dotenv('.secrets')
     api_key = os.getenv('GOOGLE_API_KEY')
 
@@ -57,7 +57,7 @@ def get_image_summary(path):
         "role": "user",
         "parts": [
             {
-                "text": "Write a one sentence short summary of this image. The sentence should be no more than five words."
+                "text": prompt_text
             },
             {
                 "inline_data": {
