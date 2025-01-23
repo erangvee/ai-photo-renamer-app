@@ -22,8 +22,8 @@ load_dotenv('vars')
 
 # specify constants
 PAGE_TITLE = os.getenv('PAGE_TITLE')
-DOWNLOAD_PATH = os.getenv('DOWNLOAD_PATH').rstrip('./') + '-' + token + '/'
-SOURCE_PATH = os.getenv('SOURCE_PATH').rstrip('./') + '-' + token + '/'
+DOWNLOAD_PATH = './output-' + token + '/'
+SOURCE_PATH = './source-' + token + '/'
 HOURS_OLD = int(os.getenv('HOURS_OLD'))
 
 # clean up old files
@@ -36,8 +36,11 @@ except:
 st.session_state.DOWNLOAD_PATH = DOWNLOAD_PATH # save variables to session state
 st.session_state.SOURCE_PATH = SOURCE_PATH # save variables to session state
 
-st.title(PAGE_TITLE)
+st.set_page_config(page_title=PAGE_TITLE,
+                   page_icon=os.getenv('FAVICON'),
+                   layout=os.getenv('LAYOUT')) 
 
+st.write("# ", PAGE_TITLE)
 st.markdown(str(os.getenv('PAGE_DESC'))+""" (_"""+str(os.getenv('GEMINI_VER'))+"""_)""")
 
 st.markdown("## Upload photos")
@@ -80,8 +83,7 @@ if len(uploaded_files) > 0:
 if st.session_state.processed:
     col1, col2 = st.columns(2)
 
-    with col1:
-        
+    with col1:        
         download.download_folder(DOWNLOAD_PATH,key="Second")
 
     with col2:

@@ -1,6 +1,6 @@
 PAGE_TITLE="Photo Renamer"
 PAGE_DESC="This application uses Gemini to rename photos."
+FAVICON="./img/14812_2.png"
+LAYOUT="wide"
 GEMINI_VER="gemini-1.5-flash"
-DOWNLOAD_PATH="./output/"
-SOURCE_PATH="./source/"
 HOURS_OLD=1
