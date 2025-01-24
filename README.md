@@ -18,6 +18,10 @@ The user can download the new generated files compressed into ZIP files.
 * The prompt can be modified by the end user by appending to it only. The app has the option to append additional text to the original prompt.
 * For further development:
     * Reset prompts to original.
+    * Give options for prompts.
+
+# To fix
+* The processing restarts every time the download button is clicked.
 
 # `vars` file
 The `vars` file is used to specify variables that you can quickly modify without having to scour through the source code. Here are what the variables for:
@@ -26,9 +30,11 @@ The `vars` file is used to specify variables that you can quickly modify without
 * `PAGE_DESC`: This text will show up at the start of the page.
 * `FAVICON`: Path of the image to be used as favicon.
 * `LAYOUT`: How the streamlit app will render. It can be `wide` and `centered`. (See [st.set_page_config](https://docs.streamlit.io/develop/api-reference/configuration/st.set_page_config))
+* `SOURCE_PREFIX`: Prefix for the source directory. By default: `source-`
+* `OUTPUT_PREFIX`: Prefix for the output directory. By default: `output-`
 * `GEMINI_VER`: Just a text to show end users what Gemini model version is currently used.
 * `HOURS_OLD`: The app will delete session files older than what's set here.
-
+* `BASE_PROMPT`: Base prompt used in the application.
 
 # Python Environment
 This code is developed and tested on Python 12. Packages used with their corresponding versions are in `requirements.txt`.
