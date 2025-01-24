@@ -3,8 +3,6 @@ from genname.utils import copy_and_rename_file, sluggify, is_not_jpg
 from genname import generator, download
 import streamlit as st
 
-
-
 def process_summary():
     image_source = st.session_state.SOURCE_PATH
     image_output = st.session_state.DOWNLOAD_PATH

@@ -64,8 +64,6 @@ if uploaded_files or st.session_state.uploaded:
                 _"""+st.session_state.prompt+"""_"""
                 )
 
-    st.session_state.count+=1
-    st.write(st.session_state.count)
     # give option to append text to the original prompt.
     add = st.checkbox("Append text to the prompt.")
 
@@ -93,7 +91,7 @@ if uploaded_files or st.session_state.uploaded:
 
         processsed = process.process_summary()
     st.session_state.uploaded = False
-    
+
 if st.session_state.processed:
     st.session_state.uploaded = False
     col1, col2 = st.columns(2)

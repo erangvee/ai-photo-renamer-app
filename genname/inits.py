@@ -37,8 +37,6 @@ def init_session_states():
     if "uploaded" not in st.session_state:
         st.session_state.uploaded = False
 
-    if "count" not in st.session_state:
-        st.session_state.count = 0
 
 def init_cleanup(path, hours_old, prefixes=["source-", "output-"]):
     clean.delete_old_zip_files(path, hours_old)
