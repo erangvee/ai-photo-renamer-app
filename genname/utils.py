@@ -43,3 +43,13 @@ def sluggify(sentence):
 def is_not_jpg(file_path):
     _, ext = os.path.splitext(file_path)
     return ext.lower() not in ('.jpg', '.jpeg', '.png')
+
+def txt_to_list(file_path):
+    # Open the file in read mode
+    with open(file_path, 'r') as file:
+        # Read all lines and remove trailing newline characters
+        prompts = file.readlines()
+    
+    # Create a list from the lines, stripping any excess whitespace/newlines
+    prompt_list= [line.strip() for line in prompts]
+    return prompt_list

@@ -37,6 +37,9 @@ def init_session_states():
     if "uploaded" not in st.session_state:
         st.session_state.uploaded = False
 
+    if "prompt" not in st.session_state:
+        st.session_state.prompt = ""
+
 
 def init_cleanup(path, hours_old, prefixes=["source-", "output-"]):
     clean.delete_old_zip_files(path, hours_old)

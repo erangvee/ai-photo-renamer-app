@@ -3,8 +3,9 @@ import streamlit as st
 import os
 import shutil
 from dotenv import load_dotenv
-from genname import process, inits, download
+from genname import process, inits, download, utils
 from streamlit_js_eval import streamlit_js_eval
+
 
 def process_clicked():
     st.session_state.process_clicked = True
@@ -31,7 +32,7 @@ PAGE_TITLE = os.getenv('PAGE_TITLE')
 DOWNLOAD_PATH = './' + OUTPUT_PREFIX + token + '/'
 SOURCE_PATH = './' + SOURCE_PREFIX + token + '/'
 HOURS_OLD = int(os.getenv('HOURS_OLD'))
-st.session_state.prompt = os.getenv('BASE_PROMPT')
+# st.session_state.prompt = os.getenv('BASE_PROMPT')
 
 # clean up old files
 try:
@@ -63,6 +64,10 @@ if uploaded_files or st.session_state.uploaded:
 
                 _"""+st.session_state.prompt+"""_"""
                 )
+
+    select_prompt = st.selectbox("Select appropriate prompt.", utils.txt_to_list("./prompts"))
+    
+    st.session_state.prompt = select_prompt
 
     # give option to append text to the original prompt.
     add = st.checkbox("Append text to the prompt.")
