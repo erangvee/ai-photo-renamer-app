@@ -59,18 +59,16 @@ uploaded_files = st.file_uploader("Upload images. Only PNG and JPG photos accept
 
 if uploaded_files or st.session_state.uploaded:
     st.markdown("""
-                ## Prompt
-                The system uses the base prompt:
-
-                _"""+st.session_state.prompt+"""_"""
-                )
+                # Prompt
+                Select your prompt, customize it, or create your own.
+                """)
 
     select_prompt = st.selectbox("Select appropriate prompt.", utils.txt_to_list("./prompts"))
     
     st.session_state.prompt = select_prompt
 
     # give option to append text to the original prompt.
-    add = st.checkbox("Append text to the prompt.")
+    add = st.checkbox("Create your own prompt or append text to the selected prompt.")
 
     if add:
         add_text = st.text_input("Enter text to append to original prompt here")
