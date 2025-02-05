@@ -16,9 +16,6 @@ The user can download the new generated files compressed into ZIP files.
 * If an image similar to a processed one is named similarly, the filename is appended with a counter (i.e. `hand-holds-city-polaroid-photo.png`, `hand-holds-city-polaroid-photo (1).png`, `hand-holds-city-polaroid-photo (2).png`, ...)
 * The prompt requires the image description (which is used as new filename) to be no more than 5 words. You can update the base prompt in `vars`.
 * The prompt can be modified by the end user by appending to it only. The app has the option to append additional text to the original prompt.
-* For further development:
-    * Reset prompts to original.
-    * Give options for prompts.
 
 # To fix
 * The processing restarts every time the download button is clicked.
@@ -34,7 +31,9 @@ The `vars` file is used to specify variables that you can quickly modify without
 * `OUTPUT_PREFIX`: Prefix for the output directory. By default: `output-`
 * `GEMINI_VER`: Just a text to show end users what Gemini model version is currently used.
 * `HOURS_OLD`: The app will delete session files older than what's set here.
-* `BASE_PROMPT`: Base prompt used in the application.
+
+# `prompts` file
+The `prompts` file contains all pre-defined prompts that the end-user can choose from. Add new pre-defined prompts by appending the new text to the end of the file. Leave the first line empty, which will allow the user to create their own prompt.
 
 # Python Environment
 This code is developed and tested on Python 12. Packages used with their corresponding versions are in `requirements.txt`.
