@@ -53,7 +53,7 @@ st.markdown(str(os.getenv('PAGE_DESC'))+""" (_"""+str(os.getenv('GEMINI_VER'))+"
 
 st.markdown("## Upload photos")
 uploaded_files = st.file_uploader("Upload images. Only PNG and JPG photos accepted.", 
-                                type=['png','jpg', 'heic'], 
+                                type=['png','jpg', 'heic', 'jfif'], 
                                 accept_multiple_files=True,
                                 on_change=uploaded)
 
