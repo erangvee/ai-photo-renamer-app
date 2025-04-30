@@ -42,7 +42,7 @@ def sluggify(sentence):
 
 def is_not_jpg(file_path):
     _, ext = os.path.splitext(file_path)
-    return ext.lower() not in ('.jpg', '.jpeg', '.png')
+    return ext.lower() not in ('.jpg', '.jpeg', '.png', '.heic')
 
 def txt_to_list(file_path):
     # Open the file in read mode
